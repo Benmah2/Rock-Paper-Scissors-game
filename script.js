@@ -2,32 +2,50 @@ function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3)
 
     if (randomNumber <= 0) {
-        return "Rock";
+        computer = "rock";
+        return computer;
     } else if (randomNumber === 1) {
-        return "paper";
+        computer = "paper";
+        return computer
     } else {
-        return "Scissors"
+        computer = "scissors"
+        computer.toLowerCase();
+        return computer;
     }
 
 }
 
 function getHumanChoice() {
-    let player = prompt("Please chose between Rock, Paper or Scissors") 
+    let user = prompt("Please chose between Rock, Paper or Scissors").toLowerCase();
     
-    if (player == "rock" ){
-        return "Rock!"
-    } else if (player == "paper") {
-        return "Paper!"
-    } else if (player == "scissors") {
-        return "Scissors!"
+    if (user == "rock" ){
+        player = user;
+        return player
+    } else if (user == "paper") {
+        player = user;
+        return player
+    } else if (user == "scissors") {
+        player = user;
+        return player
     } else {
         return "Wrong!";
     }
         
 }
-
 let humanScore = 0;
 let computerScore = 0;
 
+player = "";
+
+function playRound(humanChoice, computerChoice) {
+
+
+}
+
+
 console.log(getHumanChoice())
 console.log(getComputerChoice());
+console.log(playRound())
+console.log(humanScore);
+console.log(player);
+console.log(computer);
