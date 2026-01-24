@@ -11,4 +11,21 @@ function getComputerChoice() {
 
 }
 
+function getHumanChoice() {
+    let player = prompt("Please chose between Rock, Paper or Scissors") 
+    
+    if (player == "rock" ){
+        return "Rock!"
+    } else if (player == "paper") {
+        return "Paper!"
+    } else if (player == "scissors") {
+        return "Scissors!"
+    } else {
+        return "Wrong!";
+    }
+        
+}
+
+
+console.log(getHumanChoice())
 console.log(getComputerChoice());
