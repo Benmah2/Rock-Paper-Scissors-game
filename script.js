@@ -35,17 +35,23 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-player = "";
-
 function playRound(humanChoice, computerChoice) {
 
-
-}
+if (player === computer){
+    console.log("Draw")
+} else if (player == "rock" && computer == "scissors" || player == "paper" && computer == "rock" || player == "scissors" && computer == "paper") {
+    console.log("Player wins! " + player + " beats " + computer + "!!")
+    humanScore++;
+    return humanScore;
+} else {
+    console.log("Computer wins! " + computer + " beats " + player)
+    computerScore++;
+    return computerScore;
+}}
 
 
 console.log(getHumanChoice())
 console.log(getComputerChoice());
 console.log(playRound())
-console.log(humanScore);
-console.log(player);
-console.log(computer);
+console.log("Player score: " + humanScore);
+console.log("Computer score: " + computerScore);
