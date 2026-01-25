@@ -36,23 +36,40 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-
+    console.log(getHumanChoice());
+    console.log(getComputerChoice());
+    console.log(player);
+    console.log(computer)
 if (player === computer){
     console.log("Draw")
+    playGame(player, computer)
     return (computerScore)
 } else if (player == "rock" && computer == "scissors" || player == "paper" && computer == "rock" || player == "scissors" && computer == "paper") {
     console.log("Player wins! " + player + " beats " + computer + "!!")
     humanScore++;
+    playGame(player, computer)
     return humanScore;
 } else {
     console.log("Computer wins! " + computer + " beats " + player)
     computerScore++;
+    playGame(player, computer)
     return computerScore;
 }}
 
+function playGame(player, computer) {
 
-console.log(getHumanChoice())
-console.log(getComputerChoice());
-console.log(playRound())
+    if (humanScore === 5) {
+        let humanWins = console.log("player Wins!!")
+        return humanWins
+    } else if (computerScore === 5){
+        let computerWins = console.log("Computer Wins...")
+        return computerWins
+    }
+        else {
+        playRound();
+    }
+}
+
+playGame()
 console.log("Player score: " + humanScore);
 console.log("Computer score: " + computerScore);
