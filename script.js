@@ -38,8 +38,8 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     console.log(getHumanChoice());
     console.log(getComputerChoice());
-    console.log(player);
-    console.log(computer)
+    player;
+    computer;
 if (player === computer){
     console.log("Draw")
     playGame(player, computer)
