@@ -1,0 +1,5 @@
+loop function playGame()
+loop playGame() 5 times
+Keep track of humanScore and computerScore
+if humanScore is higher than computerScore
+print text "Player wins!! humanScore " humanScore + " " + computerScore "computerScore "

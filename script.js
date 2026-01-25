@@ -39,6 +39,7 @@ function playRound(humanChoice, computerChoice) {
 
 if (player === computer){
     console.log("Draw")
+    return (computerScore)
 } else if (player == "rock" && computer == "scissors" || player == "paper" && computer == "rock" || player == "scissors" && computer == "paper") {
     console.log("Player wins! " + player + " beats " + computer + "!!")
     humanScore++;
