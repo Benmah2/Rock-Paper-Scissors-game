@@ -56,20 +56,10 @@ if (player === computer){
     return computerScore;
 }}
 
-function playGame(player, computer) {
-
-    if (humanScore === 5) {
-        let humanWins = console.log("player Wins!!")
-        return humanWins
-    } else if (computerScore === 5){
-        let computerWins = console.log("Computer Wins...")
-        return computerWins
-    }
-        else {
-        playRound();
-    }
+function playGame() {
+    
 }
 
-playGame()
+
 console.log("Player score: " + humanScore);
 console.log("Computer score: " + computerScore);
