@@ -3,6 +3,7 @@ let computerScore = 0;
 
 const scoreboard = document.querySelector("#resultScreen");
 const scores = document.createElement("p");
+const winner = document.createElement("p");
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3);
@@ -27,59 +28,44 @@ let player = "";
 //The selector of the player
 document.querySelectorAll(".choicebtn").forEach(button => {
     button.addEventListener("click", (e) => {
-        console.log(e.target.innerText);
         player = e.target.innerText.toLowerCase();
-
+            computer = getComputerChoice();
+            playRound(player, computer);
 
         if (computerScore === 5) {
             alert("computer won...")
-            const winner = document.createElement("p");
-            winner.textContent = "Player Score: " + (humanScore)+ " | Computer: " + (computerScore)
-            scores.textContent = "Computer won... try again ";
+            winner.textContent = "Computer won... try again "; 
+            scores.textContent = "Player Score: " + (humanScore)+ " | Computer: " + (computerScore)
             scoreboard.append(winner, scores);
         } else if (humanScore === 5) {
             alert("player won!!")
-            const winner = document.createElement("p");
-            winner.textContent = "Player Score: " + (humanScore)+ " | Computer: " + (computerScore)
-            scores.textContent = "Player won!!! Nice job!";
+            winner.textContent = "Player won!!! Nice job!";
+            scores.textContent = "Player Score: " + (humanScore)+ " | Computer: " + (computerScore)
             scoreboard.append(winner, scores);
         }
         else {
-            console.log("Get to 5!" + humanScore)
-            computer = getComputerChoice();
             scores.textContent = "Player Score: " + (humanScore)+ " | Computer: " + (computerScore);
-            playRound(player, computer);
-            scoreboard.append(scores);
-            return playRound;
+            scoreboard.append(winner, scores);
         }
-        console.log("Human: " + humanScore)
-        console.log("Computer: " + computerScore)
     })
 })
 
 
 
 function playRound(player, computer) {
-    console.log(player);
-    console.log(computer);
 
     player;
     computer;
 
 if (player === computer){
-    console.log("Draw")
+    winner.textContent = "Draw..."
     return computerScore;
 } else if (player == "rock" && computer == "scissors" || player == "paper" && computer == "rock" || player == "scissors" && computer == "paper") {
-    console.log("Player wins! " + player + " beats " + computer + "!!")
+     winner.textContent = "Player scores! " + player + " beats " + computer + "!!";
     humanScore++;
     return humanScore;
 } else {
-    console.log("Computer wins! " + computer + " beats " + player)
+    winner.textContent = "Computer scores! " + computer + " beats " + player;
     computerScore++;
     return computerScore;
 }}
-
-
-
-console.log("Player score: " + humanScore);
-console.log("Computer score: " + computerScore);
