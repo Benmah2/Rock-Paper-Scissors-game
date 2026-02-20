@@ -15,28 +15,28 @@ function getComputerChoice() {
 
 }
 
-function getHumanChoice() {
-    let user = prompt("Please chose between Rock, Paper or Scissors").toLowerCase();
-    
-    if (user == "rock" ){
-        player = user;
-        return player
-    } else if (user == "paper") {
-        player = user;
-        return player
-    } else if (user == "scissors") {
-        player = user;
-        return player
-    } else {
-        return "Wrong!";
-    }
-        
-}
+let player = "";
+
+//The selector of the player
+document.querySelectorAll(".choicebtn").forEach(button => {
+    button.addEventListener("click", (e) => {
+        console.log(e.target.innerText);
+        player = e.target.innerText.toLowerCase();
+
+        playRound()
+        console.log("Human: " + humanScore)
+        console.log("Computer: " + computerScore)
+    })
+})
+
+
+
 let humanScore = 0;
 let computerScore = 0;
 
+
 function playRound(humanChoice, computerChoice) {
-    console.log(getHumanChoice());
+    console.log(player);
     console.log(getComputerChoice());
     player;
     computer;
@@ -56,10 +56,11 @@ if (player === computer){
     return computerScore;
 }}
 
-function playGame() {
-    
+function playGame(player, computer) {
+
+
 }
 
-
+playGame()
 console.log("Player score: " + humanScore);
 console.log("Computer score: " + computerScore);
