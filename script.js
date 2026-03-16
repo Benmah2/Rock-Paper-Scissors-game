@@ -1,9 +1,17 @@
 let humanScore = 0;
 let computerScore = 0;
+let lastRoundWinner = "";
 
 const scoreboard = document.querySelector("#resultScreen");
 const scores = document.createElement("p");
 const winner = document.createElement("p");
+
+const playerCard = document.querySelector("#playerCard");
+const computerCard = document.querySelector("#computerCard");
+const playerPick = document.querySelector("#playerPick");
+const computerPick = document.querySelector("#computerPick");
+const playerIcon = document.querySelector("#playerIcon");
+const computerIcon = document.querySelector("#computerIcon");
 
 scoreboard.append(winner, scores);
 scores.textContent = "Player Score: 0 | Computer: 0";
@@ -20,9 +28,11 @@ function getComputerChoice() {
     }
 }
 
+let player = "";
+
 document.querySelectorAll(".choicebtn").forEach(button => {
-    button.addEventListener("click", function () {
-        let player = button.textContent.toLowerCase();
+    button.addEventListener("click", (e) => {
+        player = e.target.innerText.toLowerCase();
         let computer = getComputerChoice();
 
         playRound(player, computer);
@@ -30,30 +40,71 @@ document.querySelectorAll(".choicebtn").forEach(button => {
         document.querySelectorAll(".choicebtn").forEach(btn => {
             btn.classList.remove("active");
         });
-        button.classList.add("active");
+        e.target.classList.add("active");
+
+        playerCard.className = "battleCard";
+        computerCard.className = "battleCard";
+
+        playerPick.textContent = player;
+        computerPick.textContent = computer;
+
+        if (player === "rock") {
+            playerIcon.textContent = "🪨";
+        } else if (player === "paper") {
+            playerIcon.textContent = "📄";
+        } else {
+            playerIcon.textContent = "✂️";
+        }
+
+        if (computer === "rock") {
+            computerIcon.textContent = "🪨";
+        } else if (computer === "paper") {
+            computerIcon.textContent = "📄";
+        } else {
+            computerIcon.textContent = "✂️";
+        }
+
+        if (lastRoundWinner === "player") {
+            playerCard.classList.add("win");
+            computerCard.classList.add("lose");
+        } else if (lastRoundWinner === "computer") {
+            computerCard.classList.add("win");
+            playerCard.classList.add("lose");
+        } else {
+            playerCard.classList.add("draw");
+            computerCard.classList.add("draw");
+        }
 
         if (computerScore === 5) {
             winner.textContent = "Computer won... try again";
+            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
         } else if (humanScore === 5) {
             winner.textContent = "Player won!!! Nice job!";
+            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
+        } else {
+            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
         }
-
-        scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
     });
 });
 
 function playRound(player, computer) {
     if (player === computer) {
         winner.textContent = "Draw...";
+        lastRoundWinner = "draw";
+        return computerScore;
     } else if (
-        (player === "rock" && computer === "scissors") ||
-        (player === "paper" && computer === "rock") ||
-        (player === "scissors" && computer === "paper")
+        player == "rock" && computer == "scissors" ||
+        player == "paper" && computer == "rock" ||
+        player == "scissors" && computer == "paper"
     ) {
-        humanScore++;
         winner.textContent = "Player scores! " + player + " beats " + computer + "!!";
+        humanScore++;
+        lastRoundWinner = "player";
+        return humanScore;
     } else {
-        computerScore++;
         winner.textContent = "Computer scores! " + computer + " beats " + player;
+        computerScore++;
+        lastRoundWinner = "computer";
+        return computerScore;
     }
 }
