@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     text-shadow: 3px 3px 0 white;
 }
 
@@ -35,6 +35,22 @@ h1 {
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 6px 0 #111827;
+    transition: 0.15s ease;
+}
+
+.choicebtn:hover {
+    transform: translateY(-4px) rotate(-1deg);
+    background: #ffd43b;
+}
+
+.choicebtn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #111827;
+}
+
+.choicebtn.active {
+    background: #ff9bd2;
+    transform: rotate(-2deg) scale(1.03);
 }
 
 #resultScreen {
@@ -45,4 +61,10 @@ h1 {
     max-width: 480px;
     margin: 0 auto;
     box-shadow: 0 6px 0 #111827;
+}
+
+#resultScreen p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 900;
 }
