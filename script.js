@@ -20,24 +20,25 @@ function getComputerChoice() {
     }
 }
 
-let player = "";
-
 document.querySelectorAll(".choicebtn").forEach(button => {
-    button.addEventListener("click", (e) => {
-        player = e.target.innerText.toLowerCase();
+    button.addEventListener("click", function () {
+        let player = button.textContent.toLowerCase();
         let computer = getComputerChoice();
 
         playRound(player, computer);
 
+        document.querySelectorAll(".choicebtn").forEach(btn => {
+            btn.classList.remove("active");
+        });
+        button.classList.add("active");
+
         if (computerScore === 5) {
             winner.textContent = "Computer won... try again";
-            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
         } else if (humanScore === 5) {
             winner.textContent = "Player won!!! Nice job!";
-            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
-        } else {
-            scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
         }
+
+        scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
     });
 });
 
@@ -49,10 +50,10 @@ function playRound(player, computer) {
         (player === "paper" && computer === "rock") ||
         (player === "scissors" && computer === "paper")
     ) {
-        winner.textContent = "Player scores! " + player + " beats " + computer + "!!";
         humanScore++;
+        winner.textContent = "Player scores! " + player + " beats " + computer + "!!";
     } else {
-        winner.textContent = "Computer scores! " + computer + " beats " + player;
         computerScore++;
+        winner.textContent = "Computer scores! " + computer + " beats " + player;
     }
 }
