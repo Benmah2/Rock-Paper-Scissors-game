@@ -86,7 +86,7 @@ h1 {
     display: grid;
     align-content: center;
     gap: 12px;
-    box-shadow: 0 8px 0 #111827;
+    box-shadow: 0 6px 0 #111827;
     transition: 0.2s ease;
 }
 
@@ -96,7 +96,7 @@ h1 {
 
 .battleCard.win {
     border-color: #16a34a;
-    box-shadow: 0 0 0 6px #bbf7d0, 0 8px 0 #111827;
+    box-shadow: 0 0 0 8px #bbf7d0, 0 8px 0 #111827;
     transform: scale(1.04);
 }
 
@@ -106,7 +106,7 @@ h1 {
 
 .battleCard.draw {
     border-color: #2563eb;
-    box-shadow: 0 0 0 6px #bfdbfe, 0 8px 0 #111827;
+    box-shadow: 0 0 0 8px #bfdbfe, 0 8px 0 #111827;
 }
 
 .cardTitle {
