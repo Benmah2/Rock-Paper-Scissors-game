@@ -62,6 +62,11 @@ h1 {
     transform: rotate(-2deg) scale(1.03);
 }
 
+.choicebtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .battleTable {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -86,7 +91,7 @@ h1 {
     display: grid;
     align-content: center;
     gap: 12px;
-    box-shadow: 0 6px 0 #111827;
+    box-shadow: 0 8px 0 #111827;
     transition: 0.2s ease;
 }
 
@@ -96,7 +101,7 @@ h1 {
 
 .battleCard.win {
     border-color: #16a34a;
-    box-shadow: 0 0 0 8px #bbf7d0, 0 8px 0 #111827;
+    box-shadow: 0 0 0 6px #bbf7d0, 0 8px 0 #111827;
     transform: scale(1.04);
 }
 
@@ -106,7 +111,7 @@ h1 {
 
 .battleCard.draw {
     border-color: #2563eb;
-    box-shadow: 0 0 0 8px #bfdbfe, 0 8px 0 #111827;
+    box-shadow: 0 0 0 6px #bfdbfe, 0 8px 0 #111827;
 }
 
 .cardTitle {
@@ -141,6 +146,23 @@ h1 {
     margin: 10px 0;
     font-size: 1.1rem;
     font-weight: 900;
+}
+
+#retryBtn {
+    margin-top: 22px;
+    background: #7dd3fc;
+    color: #111827;
+    border: 4px solid #111827;
+    border-radius: 999px;
+    padding: 14px 24px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 0 6px 0 #111827;
+}
+
+#retryBtn:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: #38bdf8;
 }
 
 @media (max-width: 700px) {

@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let gameOver = false;
 let lastRoundWinner = "";
 
 const scoreboard = document.querySelector("#resultScreen");
@@ -12,6 +13,9 @@ const playerPick = document.querySelector("#playerPick");
 const computerPick = document.querySelector("#computerPick");
 const playerIcon = document.querySelector("#playerIcon");
 const computerIcon = document.querySelector("#computerIcon");
+
+const retryBtn = document.querySelector("#retryBtn");
+const choiceButtons = document.querySelectorAll(".choicebtn");
 
 scoreboard.append(winner, scores);
 scores.textContent = "Player Score: 0 | Computer: 0";
@@ -32,6 +36,8 @@ let player = "";
 
 document.querySelectorAll(".choicebtn").forEach(button => {
     button.addEventListener("click", (e) => {
+        if (gameOver) return;
+
         player = e.target.innerText.toLowerCase();
         let computer = getComputerChoice();
 
@@ -76,11 +82,15 @@ document.querySelectorAll(".choicebtn").forEach(button => {
         }
 
         if (computerScore === 5) {
+            gameOver = true;
             winner.textContent = "Computer won... try again";
             scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
+            choiceButtons.forEach(btn => btn.disabled = true);
         } else if (humanScore === 5) {
+            gameOver = true;
             winner.textContent = "Player won!!! Nice job!";
             scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
+            choiceButtons.forEach(btn => btn.disabled = true);
         } else {
             scores.textContent = "Player Score: " + humanScore + " | Computer: " + computerScore;
         }
@@ -108,3 +118,26 @@ function playRound(player, computer) {
         return computerScore;
     }
 }
+
+retryBtn.addEventListener("click", function () {
+    humanScore = 0;
+    computerScore = 0;
+    gameOver = false;
+    lastRoundWinner = "";
+
+    winner.textContent = "";
+    scores.textContent = "Player Score: 0 | Computer: 0";
+
+    choiceButtons.forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove("active");
+    });
+
+    playerCard.className = "battleCard hidden";
+    computerCard.className = "battleCard hidden";
+
+    playerPick.textContent = "Waiting...";
+    computerPick.textContent = "Waiting...";
+    playerIcon.textContent = "❔";
+    computerIcon.textContent = "❔";
+});
